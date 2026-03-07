@@ -1,721 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sevinç’e Özel — Romantik Evren</title>
-  <style>
-    :root{
-      --bg:#070816; --bg2:#120a2a;
-      --card:rgba(255,255,255,.07);
-      --stroke:rgba(255,255,255,.14);
-      --txt:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.70);
-      --pink:#ff4fa6; --violet:#a855f7; --cyan:#22d3ee; --gold:#fbbf24;
-      --shadow:0 22px 90px rgba(0,0,0,.55);
-      --r:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--txt);
-      min-height:100vh;
-      background:
-        radial-gradient(1100px 600px at 15% 10%, rgba(255,79,166,.18), transparent 60%),
-        radial-gradient(900px 520px at 85% 25%, rgba(34,211,238,.14), transparent 58%),
-        radial-gradient(1000px 650px at 55% 110%, rgba(168,85,247,.20), transparent 62%),
-        linear-gradient(135deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08.03</title>
+    <style>
+        /* Modern, temiz ve premium fontlar */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
 
-    /* Starfield */
-    .sky{position:fixed; inset:0; z-index:0; pointer-events:none;}
-    .star{
-      position:absolute; width:2px; height:2px; border-radius:99px;
-      background:rgba(255,255,255,.85);
-      opacity:.65;
-      animation: tw 2.6s ease-in-out infinite;
-    }
-    @keyframes tw{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.8);opacity:1}}
-    .shoot{
-      position:absolute;
-      width:160px; height:2px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.9), rgba(255,255,255,0));
-      opacity:.0;
-      transform: rotate(-12deg);
-      animation: shoot 6.5s infinite ease-in-out;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,.45));
-    }
-    @keyframes shoot{
-      0%,65%{opacity:0; transform:translateX(-30vw) translateY(10vh) rotate(-12deg)}
-      70%{opacity:1}
-      80%{opacity:0; transform:translateX(120vw) translateY(55vh) rotate(-12deg)}
-      100%{opacity:0}
-    }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            /* Temiz ve Premium Krem Rengi Arka Plan */
+            background-color: #f4f1ea;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    /* Floating hearts */
-    .hearts{position:fixed; inset:0; z-index:1; pointer-events:none;}
-    .h{
-      position:absolute; bottom:-15vh;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,.45));
-      animation: up linear forwards;
-      opacity:0;
-    }
-    @keyframes up{
-      0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0}
-      10%{opacity:.95}
-      100%{transform:translateY(-130vh) translateX(var(--dx)) rotate(25deg); opacity:0}
-    }
+        /* Ana İçerik Kartı (Zarif ve temiz) */
+        .container {
+            width: 85%;
+            max-width: 420px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: left;
+            animation: fadeIn 1s ease-out forwards;
+        }
 
-    .wrap{
-      position:relative; z-index:2;
-      width:min(980px, 92vw);
-      margin:0 auto;
-      padding: 26px 0 70px;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    header{
-      padding: 18px 2px 10px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      padding: 9px 12px;
-      border-radius:999px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.3);
-      color:var(--muted);
-      font-size:.92rem;
-      width:max-content;
-    }
-    .badge b{color:var(--txt)}
-    h1{
-      margin: 10px 0 0;
-      font-size: clamp(2.1rem, 4vw, 3.15rem);
-      letter-spacing:-.03em;
-      line-height:1.05;
-    }
-    .sub{
-      margin: 10px 0 0;
-      color:var(--muted);
-      line-height:1.6;
-      max-width: 68ch;
-    }
+        /* Gerçekçi ve Premium Lale Görseli */
+        .realistic-tulip {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            filter: brightness(0.95); /* Göze daha yumuşak gelmesi için */
+        }
 
-    .btns{display:flex; gap:10px; flex-wrap:wrap}
-    button{
-      cursor:pointer;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.08);
-      color:var(--txt);
-      padding: 12px 14px;
-      border-radius: 14px;
-      font-weight:700;
-      box-shadow: 0 12px 38px rgba(0,0,0,.28);
-      backdrop-filter: blur(10px);
-      transition: transform .12s ease, background .2s ease, border-color .2s ease;
-      position:relative;
-    }
-    button:hover{transform: translateY(-1px); background: rgba(255,255,255,.12)}
-    button:active{transform: translateY(0) scale(.98)}
-    .primary{
-      border-color: rgba(255,79,166,.55);
-      background: linear-gradient(135deg, rgba(255,79,166,.25), rgba(168,85,247,.20));
-    }
-    .gold{
-      border-color: rgba(251,191,36,.55);
-      background: linear-gradient(135deg, rgba(251,191,36,.18), rgba(255,79,166,.16));
-    }
+        /* Tipografi */
+        h1.date {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      margin-top: 18px;
-    }
-    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
 
-    .card{
-      border:1px solid var(--stroke);
-      background: var(--card);
-      border-radius: var(--r);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-    .rowTitle{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      margin-bottom: 10px;
-    }
-    .rowTitle h2{margin:0; font-size:1.2rem; letter-spacing:-.01em}
-    .pill{
-      font-size:.86rem;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      white-space:nowrap;
-    }
+        p.message {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #333;
+            margin: 0 0 20px 0;
+        }
 
-    /* Heartbeat lock */
-    .lockArea{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start;}
-    .beatBox{
-      width: 170px; height: 170px;
-      border-radius: 24px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      display:grid;
-      place-items:center;
-      user-select:none;
-      cursor:pointer;
-      transition: transform .15s ease;
-      box-shadow: 0 18px 60px rgba(0,0,0,.38);
-    }
-    .beatBox:hover{transform: translateY(-2px)}
-    .heart{font-size: 66px; animation: beat 1.25s ease-in-out infinite; transform-origin:center;}
-    @keyframes beat{
-      0%,100%{transform:scale(1)}
-      20%{transform:scale(1.12)}
-      40%{transform:scale(0.98)}
-      60%{transform:scale(1.18)}
-      75%{transform:scale(1)}
-    }
-    .progress{height:10px; background: rgba(255,255,255,.12); border-radius:999px; overflow:hidden; margin-top: 10px; border:1px solid rgba(255,255,255,.10);}
-    .bar{height:100%; width:0%; background: linear-gradient(90deg, rgba(255,79,166,.85), rgba(34,211,238,.75)); border-radius:999px; transition: width .18s ease;}
-    .note{flex:1; min-width: 240px; color:var(--muted); line-height:1.65;}
-    .secret{
-      margin-top: 12px; display:none; padding: 12px 12px;
-      border-radius: 14px; background: rgba(255,255,255,.06);
-      border-left: 3px solid rgba(255,79,166,.65); color:var(--txt);
-    }
-    .secret.show{display:block}
-
-    /* Photo Heart */
-    .photoRow{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
-    .photoHeart{
-      width: 170px; height: 170px;
-      border-radius: 24px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      display:grid; place-items:center;
-      position:relative; overflow:hidden;
-    }
-    .heartClip{
-      width: 130px; height: 130px;
-      background: #000;
-      clip-path: path("M65 115 C65 115 15 85 15 55 C15 35 30 20 50 20 C60 20 65 25 65 25 C65 25 70 20 80 20 C100 20 115 35 115 55 C115 85 65 115 65 115 Z");
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.25);
-      box-shadow: 0 0 22px rgba(255,79,166,.18);
-      transform: translateY(2px);
-    }
-    .heartClip img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.08);
-    }
-    .photoHint{color:var(--muted); line-height:1.55; flex:1; min-width: 220px;}
-    .photoHint code{background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px; border:1px solid rgba(255,255,255,.12);}
-
-    /* Candle wish */
-    .candleArea{display:grid; gap:12px;}
-    .candleWrap{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
-    .candle{
-      width: 140px; height: 180px;
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      display:grid; place-items:center;
-      position:relative; overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    .wax{width: 62px; height: 92px; border-radius: 16px; background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.12); position:absolute; bottom: 18px;}
-    .flame{
-      position:absolute; top: 24px;
-      width: 22px; height: 32px;
-      border-radius: 99px;
-      background: radial-gradient(circle at 40% 35%, rgba(255,255,255,.9), rgba(251,191,36,.95), rgba(255,79,166,.65));
-      filter: drop-shadow(0 0 18px rgba(251,191,36,.55));
-      animation: flicker .14s infinite alternate ease-in-out;
-      transform-origin:center bottom;
-    }
-    @keyframes flicker{from{transform:rotate(-2deg) scale(1)}to{transform:rotate(2deg) scale(1.03)}}
-    .flame.off{opacity:0; animation:none; filter:none}
-
-    input{
-      width:100%;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.22);
-      color:var(--txt);
-      padding: 12px 12px;
-      outline:none;
-    }
-    input:focus{border-color: rgba(34,211,238,.45)}
-    .wishBox{
-      display:none;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border-left: 3px solid rgba(251,191,36,.65);
-      line-height:1.65;
-    }
-    .wishBox.show{display:block}
-
-    /* Time capsule */
-    .capsule{display:grid; gap:10px; margin-top: 8px;}
-    .chip{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      padding: 12px;
-      border-radius: 14px;
-      line-height:1.55;
-    }
-    .chip b{color: rgba(255,255,255,.95)}
-    .chip small{color: var(--muted)}
-
-    /* Cute question */
-    .askBox{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      border-radius: 16px;
-      padding: 14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .askTitle{font-weight:900; letter-spacing:-.01em}
-    .askBtns{display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; align-items:center; min-height:56px;}
-    #noBtn{position:relative}
-    .answer{margin-top:10px; font-weight:800; display:none;}
-    .answer.show{display:block}
-
-    /* Final name */
-    .skyName{
-      margin-top: 16px;
-      text-align:center;
-      padding: 22px 12px;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      overflow:hidden;
-      position:relative;
-    }
-    .skyName h3{margin:0; font-size: clamp(1.35rem, 2.6vw, 1.75rem); letter-spacing:-.02em;}
-    .glowName{
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      margin: 10px 0 0;
-      letter-spacing:-.04em;
-      font-weight: 900;
-      background: linear-gradient(90deg, rgba(255,79,166,.95), rgba(34,211,238,.85), rgba(168,85,247,.95));
-      -webkit-background-clip:text; background-clip:text; color: transparent;
-      filter: drop-shadow(0 0 18px rgba(255,79,166,.25));
-      animation: shimmer 2.8s infinite linear;
-      background-size: 220% 100%;
-    }
-    @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:220% 50%}}
-    .spark{
-      position:absolute; width:6px;height:6px;border-radius:99px;
-      background:rgba(255,255,255,.85);
-      filter: drop-shadow(0 0 12px rgba(255,255,255,.45));
-      animation: pop 1.4s ease-out forwards;
-      opacity:0;
-    }
-    @keyframes pop{
-      0%{transform:translateY(12px) scale(.6); opacity:0}
-      25%{opacity:1}
-      100%{transform:translateY(-24px) scale(1.25); opacity:0}
-    }
-
-    /* Acrostic typewriter */
-    .acro{
-      margin-top: 10px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      border-radius: 16px;
-      padding: 14px;
-    }
-    .type{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: rgba(255,255,255,.92);
-      line-height:1.75;
-      white-space:pre-wrap;
-    }
-    .cursor{
-      display:inline-block; width:10px;
-      animation: blink 0.9s infinite;
-      color: rgba(34,211,238,.95);
-      font-weight:900;
-    }
-    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-    footer{margin-top: 18px; text-align:center; color: rgba(255,255,255,.55); font-size:.92rem;}
-  </style>
+        /* Niyeti Doğal Şekilde Belli Eden Kısım */
+        .ps-note {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #555;
+            background: #fafafa;
+            border-left: 3px solid #d4af37; /* Çok ince, zarif bir altın rengi çizgi */
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="sky" id="sky">
-    <div class="shoot" style="top:10vh; left:-20vw; animation-delay:1.2s"></div>
-    <div class="shoot" style="top:28vh; left:-25vw; animation-delay:3.1s; transform:rotate(-18deg)"></div>
-  </div>
-  <div class="hearts" id="hearts"></div>
 
-  <div class="wrap">
-    <header>
-      <div>
-        <div class="badge">🌙 <b>Sevinç</b> — romantik evren • <span id="date"></span></div>
-        <h1>Bir isim… bir his… bir yıldız gibi.</h1>
-        <p class="sub">
-          Bu sayfa bir “site” değil; küçük bir duygu kutusu.
-          İçinde mektup var, dilek var, zaman kapsülü var… ve hepsi <b>Sevinç</b> için.
+    <div class="container">
+        
+        <img class="realistic-tulip" src="https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=600&auto=format&fit=crop" alt="Gerçek Lale">
+
+        <h1 class="date">08.03</h1>
+        <div class="title">Kadınlar Günün Kutlu Olsun, Azra.</div>
+
+        <p class="message">
+            Sıradan bir mesaj atmak yerine, böyle ufak bir jest yapmak istedim. Umarım bu küçük detay gününe tatlı bir tebessüm katar.
         </p>
-      </div>
-      <div class="btns">
-        <button class="primary" id="heartRain">💗 Duygu Yağmuru</button>
-        <button class="gold" id="sparkBtn">✨ Gökyüzünü Parlat</button>
-      </div>
-    </header>
 
-    <div class="grid">
-      <!-- Heartbeat letter -->
-      <section class="card">
-        <div class="rowTitle">
-          <h2>💓 Kalp Atışıyla Açılan Mektup</h2>
-          <div class="pill">3 dokunuş</div>
+        <div class="ps-note">
+            Tanışmıyoruz ama bu vesileyle belki de tanışmış oluruz diye düşündüm :)
         </div>
-
-        <div class="lockArea">
-          <div class="beatBox" id="beatBox" title="Kalbe 3 kez tıkla">
-            <div style="text-align:center">
-              <div class="heart">❤️</div>
-              <div style="font-size:.9rem; color:var(--muted); margin-top:6px">3 kez tıkla</div>
-              <div class="progress"><div class="bar" id="bar"></div></div>
-            </div>
-          </div>
-
-          <div class="note">
-            <div style="font-weight:900; color:var(--txt)">Bu mektup “hızlı” açılmaz.</div>
-            <div>Çünkü bazı şeyler… ancak kalp ritmiyle anlaşılır.</div>
-
-            <div class="secret" id="secret">
-              <b>Sevinç,</b><br><br>
-              Senin adın bile içimde “iyi” bir şey başlatıyor.<br>
-              Bir gün “yanımda ol” desen, ben o günü saklarım.<br><br>
-              <b>Adın gibi… iyi geliyorsun.</b> 🌸
-            </div>
-          </div>
-        </div>
-
-        <!-- Acrostic -->
-        <div class="acro">
-          <div class="rowTitle" style="margin:0 0 8px">
-            <h2>🖋️ S-E-V-İ-N-Ç</h2>
-            <div class="pill">akrostiş</div>
-          </div>
-          <div class="type" id="type"></div><span class="cursor">|</span>
-        </div>
-      </section>
-
-      <!-- Photo + Cute Question -->
-      <section class="card">
-        <div class="rowTitle">
-          
-          <div class="pill">kalp çerçeve</div>
-        </div>
-
-        <div class="photoRow">
-          <div class="photoHeart">
-            <div class="heartClip">
-             
-              <img src="sevinc.jpg" alt="Sevinç" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22130%22 height=%22130%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2313132a%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23ffffff%22 font-family=%22Arial%22 font-size=%2211%22>sevinc.jpg yok</text></svg>';"/>
-            </div>
-          </div>
-          <div class="photoHint">
-            
-            
-            <div style="margin-top:8px; font-size:.95rem">
-           
-            </div>
-          </div>
-        </div>
-
-        <hr style="border:none;border-top:1px solid rgba(255,255,255,.12); margin:14px 0">
-
-        <div class="rowTitle" style="margin:0 0 8px">
-          <h2>💬 Bir Soru</h2>
-          <div class="pill">tatlı oyun</div>
-        </div>
-
-        <div class="askBox" id="askBox">
-          <div class="askTitle">Snapchat güzel ama sen Whatsapp'a daha çok yakışırsın,geçelim mi? </div>
-          <div class="askBtns" id="askBtns">
-            <button class="primary" id="yesBtn">Evet</button>
-            <button id="noBtn">Hayır</button>
-          </div>
-          <div class="answer" id="answer"></div>
-        </div>
-      </section>
+        
     </div>
 
-    <!-- Candle wish -->
-    <section class="card" style="margin-top:16px;">
-      <div class="rowTitle">
-        <h2>🕯️ Dilek Mumu</h2>
-        <div class="pill">üfle-tıkla</div>
-      </div>
-
-      <div class="candleArea">
-        <div class="candleWrap">
-          <div class="candle">
-            <div class="flame" id="flame"></div>
-            <div class="wax"></div>
-          </div>
-          <div style="flex:1; min-width: 220px;">
-            <div style="font-weight:900">Bir dilek yaz…</div>
-            <div class="sub" style="margin-top:6px">
-              Sonra “mumu üfle”ye bas. Dilek burada saklanır.
-            </div>
-            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-              <button class="gold" id="blowBtn">💨 Mumu Üfle</button>
-              <button id="relightBtn">🔥 Yeniden Yak</button>
-            </div>
-          </div>
-        </div>
-
-        <input id="wish" placeholder="Örn: Sevinç hep mutlu olsun…" />
-        <div class="wishBox" id="wishBox"></div>
-      </div>
-    </section>
-
-    <!-- Time capsule -->
-    <section class="card" style="margin-top:16px;">
-      <div class="rowTitle">
-        <h2>📜 Zaman Kapsülü</h2>
-        <div class="pill">romantik notlar</div>
-      </div>
-
-      <div class="capsule" id="capsule">
-        <div class="chip">
-          <b>Bugün</b> <small>(şimdi)</small><br>
-          “Sevinç’in gülüşü, günün en güzel kısmı olabilir.”
-        </div>
-        <div class="chip">
-          <b>Bir hafta sonra</b> <small>(hayal)</small><br>
-          “Belki küçük bir kahve… belki aynı şarkı… ama aynı his.”
-        </div>
-        <div class="chip">
-          <b>Bir yıl sonra</b> <small>(dilek)</small><br>
-          “Sevinç’in yanında ‘sakin’ olmayı öğrenmek…”
-        </div>
-      </div>
-
-      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
-        <input id="myLine" placeholder="Senin cümlen (kısa ve romantik)" />
-        <button class="primary" id="addLine">➕ Kapsüle Ekle</button>
-      </div>
-    </section>
-
-    <!-- Name in sky -->
-    <section class="skyName" id="skyName">
-      <h3>Ve gökyüzü, bir ismi fısıldıyor…</h3>
-      <div class="glowName">SEVİNÇ</div>
-      <div class="sub" style="margin:8px auto 0; max-width: 70ch">
-        Eğer bu sayfayı okuduysa… muhtemelen şu an küçük bir gülümsemesi vardır.
-        Benim için yeter.
-      </div>
-    </section>
-
-    <footer>💫 Bu sayfa “Sevinç” ismini güzel yapan şeye ithaf edildi.</footer>
-  </div>
-
-  <script>
-    // date
-    const d = new Date();
-    document.getElementById("date").textContent =
-      d.toLocaleDateString("tr-TR", { day:"2-digit", month:"long", year:"numeric" });
-
-    // stars
-    const sky = document.getElementById("sky");
-    for(let i=0;i<140;i++){
-      const s = document.createElement("div");
-      s.className="star";
-      s.style.left = Math.random()*100 + "vw";
-      s.style.top  = Math.random()*100 + "vh";
-      s.style.animationDelay = (Math.random()*2.6) + "s";
-      s.style.opacity = (0.25 + Math.random()*0.75);
-      sky.appendChild(s);
-    }
-
-    // hearts
-    const hearts = document.getElementById("hearts");
-    function heartRain(n=18){
-      const em=["💗","💖","💘","💝","💞","❤️","🌸"];
-      for(let i=0;i<n;i++){
-        const h=document.createElement("div");
-        h.className="h";
-        h.textContent = em[Math.floor(Math.random()*em.length)];
-        const dur = 3.6 + Math.random()*2.8;
-        h.style.left = Math.random()*100 + "vw";
-        h.style.fontSize = (14 + Math.random()*20) + "px";
-        h.style.setProperty("--dx", (Math.random()*90 - 45).toFixed(0) + "px");
-        h.style.animationDuration = dur + "s";
-        hearts.appendChild(h);
-        setTimeout(()=>h.remove(), dur*1000 + 200);
-      }
-    }
-    document.getElementById("heartRain").addEventListener("click", ()=> heartRain(26));
-    setInterval(()=>heartRain(3), 2600);
-
-    // sparkles on name
-    const skyName = document.getElementById("skyName");
-    function sparkle(){
-      const s=document.createElement("div");
-      s.className="spark";
-      const x = 10 + Math.random()*80;
-      const y = 15 + Math.random()*70;
-      s.style.left = x + "%";
-      s.style.top  = y + "%";
-      s.style.opacity = "1";
-      skyName.appendChild(s);
-      setTimeout(()=>s.remove(), 1400);
-    }
-    document.getElementById("sparkBtn").addEventListener("click", ()=>{
-      for(let i=0;i<12;i++) setTimeout(sparkle, i*90);
-      heartRain(14);
-    });
-
-    // Heartbeat unlock
-    const beatBox = document.getElementById("beatBox");
-    const bar = document.getElementById("bar");
-    const secret = document.getElementById("secret");
-    let taps=0, timer=null;
-    beatBox.addEventListener("click", ()=>{
-      taps++;
-      bar.style.width = Math.min(100, (taps/3)*100) + "%";
-      heartRain(6);
-
-      clearTimeout(timer);
-      timer = setTimeout(()=>{ taps=0; bar.style.width="0%"; }, 1600);
-
-      if(taps>=3){
-        secret.classList.add("show");
-        heartRain(18);
-        taps=0; bar.style.width="0%";
-        clearTimeout(timer);
-      }
-    });
-
-    // Acrostic typewriter
-    const lines = [
-      "S — Seni düşününce bile içim ısınıyor.",
-      "E — En güzel şey bazen sadece bir gülüş.",
-      "V — Varlığın, günün en sakin yanı.",
-      "İ — İçimdeki iyi şeylerin adı gibi.",
-      "N — Ne zaman adını duysam, kalbim hızlanıyor.",
-      "Ç — Çünkü… Sevinç, sen gerçekten özelsin."
-    ];
-    const typeEl = document.getElementById("type");
-    let L=0, i=0;
-    function type(){
-      if(L >= lines.length) return;
-      const text = lines[L];
-      typeEl.textContent += text[i] || "";
-      i++;
-      if(i <= text.length){
-        setTimeout(type, 22 + Math.random()*35);
-      }else{
-        typeEl.textContent += "\n";
-        L++; i=0;
-        setTimeout(type, 240);
-      }
-    }
-    setTimeout(type, 550);
-
-    // Candle wish
-    const flame = document.getElementById("flame");
-    const wish = document.getElementById("wish");
-    const wishBox = document.getElementById("wishBox");
-    const blowBtn = document.getElementById("blowBtn");
-    const relightBtn = document.getElementById("relightBtn");
-
-    function safeText(t){
-      return (t||"").replaceAll("<","&lt;").replaceAll(">","&gt;");
-    }
-    blowBtn.addEventListener("click", ()=>{
-      const t = wish.value.trim();
-      if(!t){
-        wish.style.borderColor="rgba(251,113,133,.7)";
-        setTimeout(()=>wish.style.borderColor="rgba(255,255,255,.18)", 650);
-        return;
-      }
-      flame.classList.add("off");
-      wishBox.innerHTML = "🔒 <b>Dilek kilitlendi:</b><br>" + safeText(t) +
-        "<br><span style='color:rgba(255,255,255,.65)'>Bu dilek burada saklı…</span>";
-      wishBox.classList.add("show");
-      heartRain(22);
-    });
-    relightBtn.addEventListener("click", ()=>{
-      flame.classList.remove("off");
-      heartRain(10);
-    });
-
-    // Time capsule add
-    const addLine = document.getElementById("addLine");
-    const myLine = document.getElementById("myLine");
-    const capsule = document.getElementById("capsule");
-    addLine.addEventListener("click", ()=>{
-      const t = myLine.value.trim();
-      if(!t){
-        myLine.style.borderColor="rgba(251,113,133,.7)";
-        setTimeout(()=>myLine.style.borderColor="rgba(255,255,255,.18)", 650);
-        return;
-      }
-      const chip = document.createElement("div");
-      chip.className = "chip";
-      chip.innerHTML = "<b>Senin notun</b> <small>(şimdi)</small><br>" + safeText(t);
-      capsule.prepend(chip);
-      myLine.value="";
-      heartRain(16);
-      for(let i=0;i<8;i++) setTimeout(sparkle, i*110);
-    });
-
-    // Yes / No (No escapes)
-    const askBox = document.getElementById("askBox");
-    const askBtns = document.getElementById("askBtns");
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const answer = document.getElementById("answer");
-
-    function moveNo(){
-      const rect = askBox.getBoundingClientRect();
-      const maxX = rect.width - noBtn.offsetWidth - 18;
-      const maxY = 60; // butonlar alanı
-      const x = Math.max(8, Math.random()*maxX);
-      const y = Math.max(0, Math.random()*maxY);
-      noBtn.style.position = "absolute";
-      noBtn.style.left = x + "px";
-      noBtn.style.top = (48 + y) + "px";
-      heartRain(6);
-    }
-
-    // touch + hover
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
-
-    yesBtn.addEventListener("click", ()=>{
-      answer.textContent = "✅ Tamam… o kahvede ben sadece şunu diyeceğim: “İyi ki.” ☕💗";
-      answer.classList.add("show");
-      heartRain(26);
-      for(let i=0;i<12;i++) setTimeout(sparkle, i*90);
-    });
-  </script>
 </body>
 </html>
-    
