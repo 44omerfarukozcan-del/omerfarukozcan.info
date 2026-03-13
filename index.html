@@ -1,110 +1,229 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>08.03</title>
-    <style>
-        /* Modern, temiz ve premium fontlar */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana Özel ✨</title>
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            /* Temiz ve Premium Krem Rengi Arka Plan */
-            background-color: #f4f1ea;
-            font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
 
-        /* Ana İçerik Kartı (Zarif ve temiz) */
-        .container {
-            width: 85%;
-            max-width: 420px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: left;
-            animation: fadeIn 1s ease-out forwards;
-        }
+body {
+    background: radial-gradient(circle at 50% 50%, #2a081a 0%, #0a0508 100%);
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* HERO BÖLÜMÜ */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-        /* Gerçekçi ve Premium Lale Görseli */
-        .realistic-tulip {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            filter: brightness(0.95); /* Göze daha yumuşak gelmesi için */
-        }
+.azra {
+    font-size: 100px;
+    font-weight: 800;
+    letter-spacing: 20px;
+    color: #ffffff;
+    text-shadow: 
+        0 0 10px #ff0055, 
+        0 0 20px #ff0055, 
+        0 0 40px #ff0055, 
+        0 0 80px #e6004c;
+    animation: pulseGlow 3s infinite alternate;
+    margin-left: 20px;
+}
 
-        /* Tipografi */
-        h1.date {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8em;
-            font-weight: 700;
-            margin: 0 0 5px 0;
-            letter-spacing: -1px;
-            color: #1a1a1a;
-        }
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; transform: scale(0.98); }
+    to { text-shadow: 0 0 25px #ff0055, 0 0 50px #ff0055, 0 0 80px #e6004c; transform: scale(1.02); }
+}
 
-        .title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2em;
-            font-style: italic;
-            color: #555;
-            margin-bottom: 20px;
-        }
+.subtitle {
+    margin-top: 20px;
+    color: #a0a0a0;
+    font-size: 19px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
 
-        p.message {
-            font-size: 0.95em;
-            line-height: 1.6;
-            color: #333;
-            margin: 0 0 20px 0;
-        }
+/* KARTLARIN BULUNDUĞU BÖLÜM */
+.section {
+    max-width: 800px;
+    margin: auto;
+    padding: 60px 25px;
+}
 
-        /* Niyeti Doğal Şekilde Belli Eden Kısım */
-        .ps-note {
-            font-size: 0.9em;
-            line-height: 1.5;
-            color: #555;
-            background: #fafafa;
-            border-left: 3px solid #d4af37; /* Çok ince, zarif bir altın rengi çizgi */
-            padding: 12px 15px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 10px;
-        }
-    </style>
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 0, 85, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, border 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border: 1px solid rgba(255, 0, 85, 0.5);
+    box-shadow: 0 20px 40px rgba(255, 0, 85, 0.15);
+}
+
+h2 {
+    color: #ff3377;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #cccccc;
+    font-weight: 300;
+}
+
+/* AKROSTİŞ BÖLÜMÜ */
+.acrostic p {
+    margin: 15px 0;
+    font-size: 1.15em;
+}
+
+.acrostic span {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ff0055;
+    text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+    margin-right: 5px;
+}
+
+/* BUTON TASARIMI */
+button {
+    margin-top: 30px;
+    padding: 16px 32px;
+    border: none;
+    background: linear-gradient(45deg, #ff0055, #ff4081);
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 0, 85, 0.4);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 0, 85, 0.6);
+}
+
+/* KALP ANİMASYONU */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff0055;
+    text-shadow: 0 0 10px #ff0055;
+    animation: float 5s ease-in infinite;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    color: #555;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        
-        <img class="realistic-tulip" src="https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=600&auto=format&fit=crop" alt="Gerçek Lale">
+<div class="hero">
+    <div class="azra">AZRA</div>
+    <p class="subtitle">Burası sana ait ufak bir ayrıntı.</p>
+</div>
 
-        <h1 class="date">08.03</h1>
-        <div class="title">Kadınlar Günün Kutlu Olsun, Azra.</div>
+<div class="section">
 
-        <p class="message">
-            Sıradan bir mesaj atmak yerine, böyle ufak bir jest yapmak istedim. Umarım bu küçük detay gününe tatlı bir tebessüm katar.
+    <div class="card">
+        <h2>Ufak Bir İtiraf</h2>
+        <p>
+            Azra,<br><br>
+            Bu site aslında çok büyük bir şey değil.<br>
+            Sadece sana ait küçük bir yer gibi düşün.<br><br>
+            Henüz tam anlamıyla yan yana gelmemiş olabiliriz.<br>
+            Sadece birkaç fotoğraf ve tatlı bir sohbet.<br><br>
+            Ama bazen insan birinin o güzel enerjisini ekranın ötesinden bile net bir şekilde hissedebiliyor.
         </p>
-
-        <div class="ps-note">
-            Tanışmıyoruz ama bu vesileyle belki de tanışmış oluruz diye düşündüm :)
-        </div>
-        
     </div>
+
+    <div class="card">
+        <h2>Şifreli Not</h2>
+        <div class="acrostic">
+            <p><span>A</span>slında seni anlatmaya yetmez bu sözler,</p>
+            <p><span>Z</span>aten bazen bir bakış içinde çok şey gizler.</p>
+            <p><span>R</span>astgele karşıma çıkmış gibi görünsen de,</p>
+            <p><span>A</span>klımda kalan en net detay o güzel gözler.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Son Bir Not</h2>
+        <p>
+            Sıradan mesajlaşmalar yerine kendi tarzımda sana böyle ufak bir detay bırakmak istedim.<br><br>
+            Şimdilik bu dijital sayfa ilk anımız olarak burada kalsın. Kim bilir, belki ileride çok daha güzel anıları beraber biriktip buraya ekleyip ölümsüzleştiriz.<br><br>
+            Bakalım zaman bize neler gösterecek.
+        </p>
+        <button onclick="mesaj()">Şimdi normal sohbete dönebiliriz 🙂</button>
+    </div>
+
+</div>
+
+<footer>
+    — Ömer
+</footer>
+
+<script>
+function mesaj(){
+    alert("O zaman DM'de görüşürüz :)")
+}
+
+function heart(){
+    const h = document.createElement("div")
+    h.className = "heart"
+    h.innerHTML = "❤"
+    h.style.left = Math.random() * 100 + "vw"
+    h.style.fontSize = (15 + Math.random() * 20) + "px"
+    h.style.animationDuration = (4 + Math.random() * 4) + "s"
+    document.body.appendChild(h)
+    
+    setTimeout(() => {
+        h.remove()
+    }, 6000)
+}
+
+setInterval(heart, 400)
+</script>
 
 </body>
 </html>
