@@ -1,1 +1,1 @@
-# dogum-gunu2
+omerfarukozcan.com.tr
